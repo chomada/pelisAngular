@@ -8,7 +8,9 @@ import { Movie } from '../models/movie.model';
 export class MovieService {
 
   constructor() { }
-
+  getDetail(id:number): Observable<Movie | undefined>{
+    return of (movieMock.find(movie=> movie.id==id))
+  }
   getList(): Observable<Movie[]>{
     return of (movieMock);
   }
