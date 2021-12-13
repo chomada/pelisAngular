@@ -1,18 +1,34 @@
 <h2>Register</h2>
-<form class="row g-3">
-    <div class="col-auto">
-        <label for="nickname" class="">Nickname</label>
-        <input type="text"  class="form-control" id="nickname" placeholder="carlosjavier12">
+<form [formGroup]="registerForm" class="form-group row g-3">
+
+  <div class="col-auto">
+    <label for="nickname" class="">Nickname</label>
+    <input type="text"  class="form-control" id="nickname" name="nickname" formControlName="nickname"placeholder="carlosjavier12">
+    <div *ngIf="nicknameControl.invalid && (nicknameControl.dirty || nicknameControl.touched)" class ="alert alert-danger">
+      <div *ngIf ="nicknameControl.hasError('required')">
+        El Nickname es requerido
+      </div>
+      </div>
+</div>
+    <div class=" col-auto">
+      <label for="email" class="">Email</label>
+      <input type="text"  name="email" class="form-control" id="email"  formControlName="email"placeholder="email@example.com">
+      <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class ="alert alert-danger">
+        <div *ngIf ="emailControl.hasError('required')">
+          El email es requerido
+        </div>
+        </div>
     </div>
     <div class="col-auto">
-      <label for="staticEmail2" class="">Email</label>
-      <input type="text"  class="form-control" id="staticEmail2" placeholder="email@example.com">
+      <label for="password" class="">Password</label>
+      <input type="password" name="password"class="form-control" id="password" formControlName="password"placeholder="Password">
+      <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)" class ="alert alert-danger">
+        <div *ngIf ="passwordControl.hasError('required')">
+          Password requerido
+        </div>
+        </div>
     </div>
     <div class="col-auto">
-      <label for="inputPassword2" class="">Password</label>
-      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-    </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="registerForm.invalid">Confirm identity</button>
     </div>
   </form>

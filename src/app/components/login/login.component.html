@@ -1,14 +1,24 @@
 <h2>Login</h2>
-<form class="row g-3">
-    <div class="col-auto">
-      <label for="staticEmail2" class="">Email</label>
-      <input type="text"  class="form-control" id="staticEmail2" placeholder="email@example.com">
+<form [formGroup]="userForm" class="form-group row g-3">
+    <div class=" col-auto">
+      <label for="email" class="">Email</label>
+      <input type="text"  name="email" class="form-control" id="email"  formControlName="email"placeholder="email@example.com">
+      <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class ="alert alert-danger">
+        <div *ngIf ="emailControl.hasError('required')">
+          El email es requerido
+        </div>
+        </div>
     </div>
     <div class="col-auto">
-      <label for="inputPassword2" class="">Password</label>
-      <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+      <label for="password" class="">Password</label>
+      <input type="password" name="password"class="form-control" id="password" formControlName="password"placeholder="Password">
+      <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)" class ="alert alert-danger">
+        <div *ngIf ="passwordControl.hasError('required')">
+          Password requerido
+        </div>
+        </div>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="userForm.invalid">Confirm identity</button>
     </div>
   </form>

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InfoComponent } from './components/info/info.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
   {
     path: 'movies/:id',
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'my-account',
     component: MyAccountComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
