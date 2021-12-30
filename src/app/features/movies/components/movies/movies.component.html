@@ -1,8 +1,9 @@
 
+  <h1 color="accent">Movies</h1>
 <div class="movie-container">
 <mat-card *ngFor="let movie of movies" style="width: 18rem;">
   <mat-card-header>
-    <h5 class="card-title">{{movie.name}}</h5>
+    <mat-card-title >{{movie.name}}</mat-card-title>
   </mat-card-header>
     <img mat-card-image [src]="movie.image" alt="...">
     <mat-card-content >
@@ -12,8 +13,10 @@
     </mat-card-content>
 
     <mat-card-actions>
-    <button mat-button (click)="navigateToDetail(movie.id)">Go somewhere</button>
+    <button mat-raised-button color="accent"(click)="navigateToDetail(movie.id)">+ Info</button>
   </mat-card-actions>
 </mat-card>
 
 </div>
+
+

@@ -1,23 +1,24 @@
+<h1 color="accent">{{movie.name}}</h1>
+<div class="movie-container">
+<mat-card class="formulario">
+  <mat-card-header>
+    <mat-card-title >{{movie.name}}</mat-card-title>
+  </mat-card-header>
+    <img mat-card-image [src]="movie.image" alt="...">
+    <mat-card-content >
 
-<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    + Info
-  </button>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Movie</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Description
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-<p>{{movie.name}}</p>
+      <p class="card-text">Category: {{movie.category}}.</p>
+      <p class="card-text">Duration: {{movie.duration}}.</p>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+    <button mat-raised-button color="accent">Add to cart</button>
+  </mat-card-actions>
+</mat-card>
+
+</div>
+
+
+

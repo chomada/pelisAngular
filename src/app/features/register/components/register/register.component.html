@@ -1,5 +1,5 @@
-<h2>Register</h2>
-<form [formGroup]="registerForm" class="form-group row g-3">
+<h1>Register</h1>
+<form [formGroup]="registerForm" class="form-group row g-3 formulario">
 
   <div class="col-auto">
     <label for="nickname" class="">Nickname</label>
@@ -44,8 +44,9 @@
 
         </div>
     </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3" [disabled]="registerForm.invalid"(click)="createUser()">Confirm identity</button>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="registerForm.invalid"(click)="createUser()"mat-raised-button color="accent">Confirm identity</button>
     </div>
+    <a href="login" >Si ya tenes cuenta logueate aqui</a>
   </form>
-  <a href="login" >Si ya tenes cuenta logueate aqui</a>
+

@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; width: 100%;margin: 0; font-family: 'Montserrat', sans-serif !important; }
+
+/* From https://css.glass */
+body/* From https://css.glass */
+{background: rgba(255, 158, 158, 0.66);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2.7px);
+-webkit-backdrop-filter: blur(2.7px);
+border: 1px solid rgba(255, 158, 158, 1);}
+
+h1{
+  font-family: 'Montserrat', sans-serif !important;
+}
