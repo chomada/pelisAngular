@@ -7,6 +7,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 
 
 
+
+
 @NgModule({
   declarations: [
     MoviesComponent,

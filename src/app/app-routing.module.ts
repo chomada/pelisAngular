@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import { RegisterComponent } from './components/register/register.component';
+
 const routes: Routes = [
   // {
   //   path: 'movies/:id',
@@ -17,13 +17,18 @@ const routes: Routes = [
      path: 'movies',
     loadChildren: ()=> import ('./features/movies/movies.module').then(m=>m.MoviesModule)
    },
+   {
+    path: 'login',
+   loadChildren: ()=> import ('./features/login/login.module').then(m=>m.LoginModule)
+  },
   {
     path: 'my-account',
     component: MyAccountComponent
+
   },
   {
     path: 'register',
-    component: RegisterComponent
+    loadChildren: ()=> import ('./features/register/register.module').then(m=>m.RegisterModule)
   }
 ];
 

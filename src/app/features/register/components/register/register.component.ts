@@ -3,12 +3,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import {User} from 'src/app/models/user.models';
 import { Subscription } from 'rxjs';
+import { RegisterService } from '../../service/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit,OnDestroy {
+export class RegisterComponent implements OnInit {
   user:User[]=[];
   private subscription: Subscription | undefined;
 
@@ -22,7 +23,8 @@ export class RegisterComponent implements OnInit,OnDestroy {
   emailControl=this.registerForm.controls['email'];
   passwordControl=this.registerForm.controls['password'];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private registerService: RegisterService) { }
 
   ngOnInit(): void {
     const nickname = this.registerForm.controls['nickname'];
@@ -31,15 +33,11 @@ export class RegisterComponent implements OnInit,OnDestroy {
     this.subscription=this.userService.getList().subscribe(user=>this.user=user);
 
   }
-  validateRegister(){
-
-  }
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-    console.log("Hook On Destroy");
-  }
+  createUser(){
+    const nickname=this.nicknameControl.value;
+    const email= this.emailControl.value;
+    const password= this.passwordControl.value;
+    this.registerService.createUser(nickname,email,password).subscribe(response=>console.log(response));
 
 }
-
-
-
+}
