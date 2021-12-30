@@ -8,6 +8,12 @@
       <div *ngIf ="nicknameControl.hasError('required')">
         El Nickname es requerido
       </div>
+      <div *ngIf ="nicknameControl.hasError('minlength')">
+        Minimo 4 caracteres
+      </div>
+      <div *ngIf ="nicknameControl.hasError('maxlength')">
+        Maximo 20 caracteres
+      </div>
       </div>
 </div>
     <div class=" col-auto">
@@ -16,6 +22,9 @@
       <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class ="alert alert-danger">
         <div *ngIf ="emailControl.hasError('required')">
           El email es requerido
+        </div>
+        <div *ngIf ="emailControl.hasError('email')">
+          Debe ser formato email
         </div>
         </div>
     </div>
@@ -26,6 +35,13 @@
         <div *ngIf ="passwordControl.hasError('required')">
           Password requerido
         </div>
+        <div *ngIf ="passwordControl.hasError('minlength')">
+          Minimo 6 caracteres
+        </div>
+        <div *ngIf ="passwordControl.hasError('maxlength')">
+          Maximo 12 caracteres
+        </div>
+
         </div>
     </div>
     <div class="col-auto">

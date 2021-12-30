@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { MovieService } from 'src/app/features/movies/services/movie.service';
 import { Movie } from 'src/app/models/movie.model';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -27,6 +27,7 @@ export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   navigateToDetail(id:number){
     this.router.navigate(['movies',id]);
+    this.subscription= this.movieService.getById(id).subscribe();
 
   }
   ngAfterViewInit(): void {

@@ -4,6 +4,9 @@
       <label for="email" class="">Email</label>
       <input type="text"  name="email" class="form-control" id="email"  formControlName="email"placeholder="email@example.com">
       <div *ngIf="emailControl.invalid && (emailControl.dirty || emailControl.touched)" class ="alert alert-danger">
+        <div *ngIf ="emailControl.hasError('email')">
+          Debe ser formato email
+        </div>
         <div *ngIf ="emailControl.hasError('required')">
           El email es requerido
         </div>
@@ -15,6 +18,12 @@
       <div *ngIf="passwordControl.invalid && (passwordControl.dirty || passwordControl.touched)" class ="alert alert-danger">
         <div *ngIf ="passwordControl.hasError('required')">
           Password requerido
+        </div>
+        <div *ngIf ="passwordControl.hasError('minlength')">
+          Minimo 6 caracteres
+        </div>
+        <div *ngIf ="passwordControl.hasError('maxlength')">
+          Maximo 12 caracteres
         </div>
         </div>
     </div>

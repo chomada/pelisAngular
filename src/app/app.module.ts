@@ -5,19 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { MoviesComponent } from './components/movies/movies.component';
-import { InfoComponent } from './components/info/info.component';
+
 import { CartComponent } from './components/cart/cart.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    MoviesComponent,
-    InfoComponent,
     CartComponent,
     MenuComponent,
     MyAccountComponent
@@ -26,7 +27,10 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
