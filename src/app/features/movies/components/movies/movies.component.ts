@@ -3,6 +3,7 @@ import { MovieService } from 'src/app/features/movies/services/movie.service';
 import { Movie } from 'src/app/models/movie.model';
 import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/features/cart/service/cart.service';
 //import { Subscription } from 'rxjs/Subscription';
 
 
@@ -11,12 +12,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss']
 })
-export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MoviesComponent implements OnInit {
 
   movies: Movie[]=[];
   private subscription: Subscription | undefined;
 
   constructor(
+    private cartService: CartService,
     private movieService:MovieService,
     private router:Router
     ) {console.log("Hook Constructor"); }
@@ -30,12 +32,14 @@ export class MoviesComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription= this.movieService.getById(id).subscribe();
 
   }
-  ngAfterViewInit(): void {
-    console.log("Hook After View Init");
+  addToCart(movie: Movie){
+    this.cartService.addMovie(movie)
+
   }
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-    console.log("Hook On Destroy");
-  }
+
+  // ngOnDestroy(): void {
+  //   this.subscription?.unsubscribe();
+  //   console.log("Hook On Destroy");
+  // }
 
 }

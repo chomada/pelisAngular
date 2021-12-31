@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
     const email= this.emailControl.value;
     const password= this.passwordControl.value;
     this.registerService.createUser(nickname,email,password).subscribe(response=>console.log(response));
+    alert("Registro exitoso")
 
 }
 }

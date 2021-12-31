@@ -13,6 +13,7 @@ export class RegisterService {
   ) { }
 
   createUser(nickname: String, email: String, password: string): Observable<boolean>{
+
     return this.httpClient.post<boolean>(this.url,{
       nickname,
       email,

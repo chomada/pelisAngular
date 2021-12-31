@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './components/cart/cart.component';
 
 import { MyAccountComponent } from './components/my-account/my-account.component';
 
@@ -24,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartComponent
+    loadChildren: ()=> import ('./features/cart/cart.module').then(m=>m.CartModule)
 
   },
   {

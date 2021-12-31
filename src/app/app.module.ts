@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 
 
 
-import { CartComponent } from './components/cart/cart.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +19,7 @@ import { MaterialModule } from './material/material.module';
     AppComponent,
 
 
-    CartComponent,
+
     MenuComponent,
     MyAccountComponent,
 

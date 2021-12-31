@@ -1,0 +1,28 @@
+
+  <h1 color="accent">Cart</h1>
+
+  <div class="movie-container">
+  <mat-card *ngFor="let movie of list" style="width: 18rem;">
+    <mat-card-header>
+      <mat-card-title >{{movie.name}}</mat-card-title>
+    </mat-card-header>
+      <img mat-card-image [src]="movie.image" alt="...">
+      <mat-card-content >
+
+        <p class="card-text">Description.</p>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+      <button mat-flat-button color="warn"(click)="removeMovie(movie)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+
+  </div>
+
+
+  <button mat-flat-button color="warn" *ngIf="valor; else elseBlock"(click)="clearCart()">Clear Cart</button>
+
+<ng-template #elseBlock><div class="alert alert-warning" role="alert">
+  Todavia no tienes nada en tu carrito.
+</div></ng-template>
