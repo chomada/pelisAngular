@@ -2,14 +2,15 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../service/login.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit,OnDestroy {
+export class LoginComponent implements OnInit {
 
-  private subscription: Subscription | undefined;
+  error!:string;
 
   userForm= new FormGroup({
 
@@ -20,15 +21,24 @@ export class LoginComponent implements OnInit,OnDestroy {
   passwordControl=this.userForm.controls['password'];
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
-
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-    console.log("Hook On Destroy");
+  submit() {
+    if (this.userForm.valid) {
+      this.loginService.validateCredentials(this.userForm.get('email')?.value, this.userForm.get('password')?.value, )
+      .subscribe(valid => {
+        if (valid) {
+          this.router.navigate(['movies']);
+        } else {
+          this.error = 'User or Password invalid';
+        }
+      })
+    }
   }
+
+
 }

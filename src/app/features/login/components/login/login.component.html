@@ -1,6 +1,6 @@
 
   <h1>Login</h1>
-<form [formGroup]="userForm" class="form-group row g-3 formulario ">
+<form [formGroup]="userForm" (ngSubmit)="submit()"class="form-group row g-3 formulario ">
     <div class=" col-auto">
       <label for="email" class="">Email</label>
       <input type="text"  name="email" class="form-control" id="email"  formControlName="email"placeholder="email@example.com">

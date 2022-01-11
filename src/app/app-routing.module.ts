@@ -2,19 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { ProtectedRouteGuard } from './guards/protected-route.guard';
+import { AdminRoleGuard } from './guards/admin-role.guard';
 
 const routes: Routes = [
-  // {
-  //   path: 'movies/:id',
-  //   component: InfoComponent
-  // },
-  // {
-  //   path: 'movies',
-  //   component: MoviesComponent
-  // },
 
    {
+
      path: 'movies',
+     canActivate: [AdminRoleGuard],
     loadChildren: ()=> import ('./features/movies/movies.module').then(m=>m.MoviesModule)
    },
    {
@@ -23,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
+    //canActivate:[ProtectedRouteGuard,AdminRoleGuard],
     loadChildren: ()=> import ('./features/cart/cart.module').then(m=>m.CartModule)
 
   },
