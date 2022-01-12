@@ -30,8 +30,8 @@ export class LoginService {
           this.email = decodedToken?.email;
           this.userName = decodedToken?.userName;
           this.role = decodedToken?.role;
-          console.log(response)
-          console.log("si anda", this.email)
+
+          console.log("VALIDETE CREDENTIALS: "+" email:"+ this.email+" username: "+this.userName+" role: "+this.role+" token: "+this.token)
           return true;
 
         } else {
@@ -54,8 +54,6 @@ export class LoginService {
   }
 
   getUserInfo(): any {
-
-    console.log("email:"+this.email)
     return {
       email: this.email,
       userName: this.userName,
