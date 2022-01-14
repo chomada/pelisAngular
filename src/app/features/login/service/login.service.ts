@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
 
   private token: any = null;
-  private email = '';
+  private email:any = '';
   private userName = '';
   private role= '';
 
@@ -27,10 +27,12 @@ export class LoginService {
         if (response.status === 'OK') {
           this.token = response.token;
           const decodedToken: any = jwt_decode(this.token);
+          console.log(decodedToken);
           this.email = decodedToken?.email;
           this.userName = decodedToken?.userName;
           this.role = decodedToken?.role;
-
+          //localStorage.setItem('email', JSON.stringify(this.email));
+          //localStorage.setItem('role', JSON.stringify(this.role));
           console.log("VALIDETE CREDENTIALS: "+" email:"+ this.email+" username: "+this.userName+" role: "+this.role+" token: "+this.token)
           return true;
 
@@ -54,11 +56,18 @@ export class LoginService {
   }
 
   getUserInfo(): any {
+
+
     return {
+      //email: JSON.parse(localStorage.getItem("email") || ""),
+      //userName: this.userName,
+      //role:JSON.parse(localStorage.getItem("role") || ""),
+      //token:this.token
       email: this.email,
       userName: this.userName,
       role:this.role,
       token:this.token
+
     }
   }
 }
