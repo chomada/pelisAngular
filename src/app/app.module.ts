@@ -11,6 +11,7 @@ import { MyAccountComponent } from './components/my-account/my-account.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -31,7 +32,8 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
