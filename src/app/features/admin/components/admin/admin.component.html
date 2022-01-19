@@ -1,0 +1,80 @@
+
+<h1 color="accent">Admin</h1>
+<form  [formGroup]="movieForm"class="form-group row g-3 formulario">
+  <mat-form-field appearance="outline">
+    <mat-label>ID</mat-label>
+    <input matInput  id="id" name="id" formControlName="id"type="number">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+  <mat-label>Name</mat-label>
+  <input matInput  id="name" name="name" formControlName="name">
+</mat-form-field>
+<mat-form-field appearance="outline" >
+  <mat-label>Duration</mat-label>
+  <input matInput type="number" class="example-right-align" placeholder="0" id="duration" name="duration" formControlName="duration"type="number">
+  <span matPrefix>&nbsp;</span>
+  <span matSuffix>min</span>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Description</mat-label>
+  <textarea matInput id="description" name="description" formControlName="description"></textarea>
+</mat-form-field>
+
+<!-- <mat-form-field appearance="outline">
+  <mat-label>Category</mat-label>
+  <mat-select id="category" name="category" formControlName="category">
+    <mat-option value="romance">Romance</mat-option>
+    <mat-option value="thriller">Thriller</mat-option>
+  </mat-select>
+</mat-form-field> -->
+
+    <input type="file" id="image" name="image" formControlName="image">
+
+    <button mat-raised-button color="primary" *ngIf="valor; else elseBlock"(click)="createMovie()">Add</button>
+    <ng-template #elseBlock ><button mat-raised-button color="primary" (click)="updateMovie2()" >
+      Update
+    </button></ng-template>
+</form>
+
+
+
+<div class="movie-container">
+<mat-card *ngFor="let movie of movies" style="width: 18rem;">
+  <mat-card-header>
+    <mat-card-title >{{movie.name}}</mat-card-title>
+  </mat-card-header>
+    <img mat-card-image src="../../../../../assets/{{movie.image}}" alt="...">
+    <mat-card-content >
+
+      <p class="card-text">{{movie.description}}.</p>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+    <button mat-raised-button color="accent"(click)="updateMovie(movie.id,movie.name,movie.duration,movie.description)">Editar</button>
+    <button mat-raised-button color="accent" (click)="deleteMovie(movie.id)">Eliminar</button>
+
+  </mat-card-actions>
+</mat-card>
+
+</div>
+
+
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

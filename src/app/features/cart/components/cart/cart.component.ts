@@ -9,7 +9,7 @@ import { CartService } from '../../service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public list:Movie[]=[];
+  public list:Movie[] | any=[];
 
   valor: boolean= true;
 
@@ -31,12 +31,14 @@ export class CartComponent implements OnInit {
     }else{
       this.valor=true;
     }
-
+    localStorage.setItem('cart', JSON.stringify(this.list));
 
   }
   clearCart(){
-    this.list=this.cartService.clearCart();
+    this.list=null
+    this.cartService.clearCart();
     this.valor=false;
+
   }
 
 

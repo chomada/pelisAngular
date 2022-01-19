@@ -1,0 +1,28 @@
+.movie-container{
+  display:flex;
+  margin:20px;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  .card{
+
+      margin-bottom:20px;
+  }
+}
+h1{
+padding: 2rem;
+text-align: center;
+font-size:4rem;
+}
+
+
+
+:host{
+  text-align: center;
+
+}
+
+.formulario{
+  margin: 4rem;
+  justify-content: center;
+
+}

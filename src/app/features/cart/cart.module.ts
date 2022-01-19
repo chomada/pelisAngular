@@ -5,6 +5,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CartRoutingModule } from './cart-routing.module';
+import { CartService } from './service/cart.service';
 
 
 

@@ -27,9 +27,7 @@ export class RegisterComponent implements OnInit {
     private registerService: RegisterService) { }
 
   ngOnInit(): void {
-    const nickname = this.registerForm.controls['nickname'];
-    const email = this.registerForm.controls['email'];
-    const password = this.registerForm.controls['password'];
+
     this.subscription=this.userService.getList().subscribe(user=>this.user=user);
 
   }

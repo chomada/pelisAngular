@@ -4,11 +4,11 @@
   <mat-card-header>
     <mat-card-title >{{movie.name}}</mat-card-title>
   </mat-card-header>
-    <img mat-card-image [src]="movie.image" alt="...">
+    <img mat-card-image src="../../../../../assets/{{movie.image}}" alt="...">
     <mat-card-content >
 
 
-      <p class="card-text">Category: {{movie.category}}.</p>
+      <p class="card-text">Descripcion: {{movie.description}}.</p>
       <p class="card-text">Duration: {{movie.duration}}.</p>
 
     </mat-card-content>

@@ -33,5 +33,6 @@ export class InfoComponent implements OnInit {
       this.cartService.addMovie(movie);
 
 
+
   }
 }

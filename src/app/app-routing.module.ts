@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { ProtectedRouteGuard } from './guards/protected-route.guard';
 import { AdminRoleGuard } from './guards/admin-role.guard';
+import { AdminModule } from './features/admin/admin.module';
 
 const routes: Routes = [
 
@@ -19,13 +20,18 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    //canActivate:[ProtectedRouteGuard,AdminRoleGuard],
+    canActivate:[AdminRoleGuard],
     loadChildren: ()=> import ('./features/cart/cart.module').then(m=>m.CartModule)
 
   },
   {
-    path: 'register',
+    path: '',
     loadChildren: ()=> import ('./features/register/register.module').then(m=>m.RegisterModule)
+  },
+  {
+    path: 'admin',
+    canActivate:[AdminRoleGuard],
+    loadChildren: ()=> import ('./features/admin/admin.module').then(m=>m.AdminModule)
   }
 ];
 

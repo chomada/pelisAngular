@@ -8,10 +8,14 @@ import {Movie} from 'src/app/models/movie.model'
   }
 )
 export class CartService {
-  private list : Movie[]=[];
+  private list : Movie[] | any=[] ;
   constructor() { }
 
   getList():Observable<Movie[]>{
+    if(localStorage.getItem("cart")!=null){
+      this.list=JSON.parse(localStorage.getItem("cart") || "")
+    }
+
 
     return of(this.list);
 
@@ -19,6 +23,9 @@ export class CartService {
 
 
   addMovie(movie:Movie){
+
+
+    localStorage.setItem('cart', JSON.stringify(this.list));
     if(!this.list.includes(movie)){
     this.list.push(movie)
     alert("Se agrego correctamente")
@@ -26,7 +33,7 @@ export class CartService {
     else{
       alert("Esta movie ya se encuentra en el carrito")
     }
-
+    localStorage.setItem('cart', JSON.stringify(this.list));
 
   }
   removeMovie(movie:Movie){
@@ -34,6 +41,7 @@ export class CartService {
     return this.list.splice(index,1)
   }
   clearCart(){
-    return this.list=[]
+    localStorage.removeItem('cart');
+    this.list=null
   }
 }

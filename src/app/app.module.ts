@@ -24,6 +24,7 @@ import { StoreModule } from '@ngrx/store';
     MenuComponent,
     MyAccountComponent,
 
+
   ],
   imports: [
     BrowserModule,

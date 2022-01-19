@@ -3,5 +3,6 @@ export interface Movie{
   name: string;
   category: string;
   duration: number;
-  image: string
+  image: string;
+  description: string;
 }
