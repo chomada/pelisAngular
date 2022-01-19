@@ -12,9 +12,9 @@ export class RegisterService {
     private httpClient: HttpClient
   ) { }
 
-  createUser(nickname: String, email: String, password: string): Observable<boolean>{
+  createUser(nickname: String, email: String, password: string): Observable<any>{
 
-    return this.httpClient.post<boolean>(this.url,{
+    return this.httpClient.post<boolean>('http://localhost:3000/api/user',{
       nickname,
       email,
       password

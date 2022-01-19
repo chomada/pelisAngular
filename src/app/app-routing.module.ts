@@ -11,7 +11,7 @@ const routes: Routes = [
    {
 
      path: 'movies',
-     canActivate: [AdminRoleGuard],
+     canActivate: [ProtectedRouteGuard],
     loadChildren: ()=> import ('./features/movies/movies.module').then(m=>m.MoviesModule)
    },
    {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    canActivate:[AdminRoleGuard],
+    canActivate:[ProtectedRouteGuard],
     loadChildren: ()=> import ('./features/cart/cart.module').then(m=>m.CartModule)
 
   },

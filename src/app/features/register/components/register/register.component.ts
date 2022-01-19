@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import {User} from 'src/app/models/user.models';
 import { Subscription } from 'rxjs';
 import { RegisterService } from '../../service/register.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,6 +12,7 @@ import { RegisterService } from '../../service/register.service';
 })
 export class RegisterComponent implements OnInit {
   user:User[]=[];
+  respuesta:string='';
   private subscription: Subscription | undefined;
 
   registerForm= new FormGroup({
@@ -23,20 +25,20 @@ export class RegisterComponent implements OnInit {
   emailControl=this.registerForm.controls['email'];
   passwordControl=this.registerForm.controls['password'];
 
-  constructor(private userService: UserService,
+  constructor(private router: Router,
     private registerService: RegisterService) { }
 
   ngOnInit(): void {
 
-    this.subscription=this.userService.getList().subscribe(user=>this.user=user);
+    //this.subscription=this.userService.getList().subscribe(user=>this.user=user);
 
   }
   createUser(){
     const nickname=this.nicknameControl.value;
     const email= this.emailControl.value;
     const password= this.passwordControl.value;
-    this.registerService.createUser(nickname,email,password).subscribe(response=>console.log(response));
-    alert("Registro exitoso")
+    this.registerService.createUser(nickname,email,password).subscribe(response=>alert(this.respuesta=response.status));
+    this.router.navigate(['login']);
 
 }
 }

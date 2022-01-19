@@ -31,7 +31,6 @@ export class LoginService {
           this.email = decodedToken?.email;
           this.userName = decodedToken?.userName;
           this.role = decodedToken?.role;
-
           localStorage.setItem('email', JSON.stringify(this.email));
           localStorage.setItem('role', JSON.stringify(this.role));
           console.log("VALIDETE CREDENTIALS: "+" email:"+ this.email+" username: "+this.userName+" role: "+this.role+" token: "+this.token)

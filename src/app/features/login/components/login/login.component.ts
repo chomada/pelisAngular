@@ -28,15 +28,26 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   submit() {
+    const emailUser=this.userForm.get('email')?.value;
+    const passwordUser=this.userForm.get('password')?.value;
     if (this.userForm.valid) {
       this.loginService.validateCredentials(this.userForm.get('email')?.value, this.userForm.get('password')?.value, )
       .subscribe(valid => {
         if (valid) {
-          this.router.navigate(['movies']);
+          this.router.navigate(['admin']);
         } else {
-          this.error = 'User or Password invalid';
+          if (emailUser == 'user@gmail.com' && passwordUser =='123456'){
+            localStorage.setItem('email', JSON.stringify(emailUser));
+            localStorage.setItem('role', JSON.stringify('user'));
+            this.router.navigate(['movies']);
+          }else{
+            this.error = 'User or Password invalid';
+          }
+
         }
       })
     }
+
+
   }
 }
