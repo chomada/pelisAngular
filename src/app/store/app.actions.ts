@@ -7,7 +7,8 @@ export const AppSetTitle = createAction(
   props<{title: string}>()
 )
 export const movieSetContent = createAction(
-  'Movie- Set movie content'
+  'Movie- Set movie content',
+  props<{items: Movie[]}>()
 )
 export const movieAddItem= createAction(
   'Movie - Add item',

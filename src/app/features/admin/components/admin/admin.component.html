@@ -35,7 +35,7 @@
 
 
 <div class="movie-container">
-<mat-card *ngFor="let movie of movies" style="width: 18rem;">
+<mat-card *ngFor="let movie of movieItems$ |async" style="width: 18rem;">
   <mat-card-header>
     <mat-card-title >{{movie.name}}</mat-card-title>
   </mat-card-header>
