@@ -38,7 +38,8 @@ export class AdminComponent implements OnInit {
   imageControl=this.movieForm.controls['image'];
   constructor(
 
-    private adminService:AdminService
+    private adminService:AdminService,
+    private router: Router
     ) {console.log("Hook Constructor"); }
 
   ngOnInit(): void {
@@ -71,6 +72,10 @@ updateMovie(id:number,name:string,duration:number,description:string){
   this.valor=false;
    //(<HTMLInputElement>document.getElementById("category")).value=category;
   //console.log(id,name,category,duration,image,description)
+
+}
+cerrarAdmin(){
+  this.adminService.closeAdmin();
 
 }
 updateMovie2(){

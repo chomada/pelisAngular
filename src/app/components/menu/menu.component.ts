@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { select,Store } from '@ngrx/store';
+import { Observable,of } from 'rxjs';
+import { appTitleSelector } from '../../store/app.selectors';
+import { AppState } from 'src/app/store/app-state.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+    private router: Router
+  ) { }
 
+
+    title$: Observable<string> = of('');
   ngOnInit(): void {
+    this.title$ = this.store.pipe(
+      select(appTitleSelector)
+    )
   }
 
+  cerrarSesion(){
+    localStorage.removeItem('role');
+    this.router.navigate(['']);
+  }
 }

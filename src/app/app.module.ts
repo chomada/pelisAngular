@@ -12,18 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { StoreModule } from '@ngrx/store';
-
-
+import { appReducer } from './store/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
-
     MenuComponent,
-    MyAccountComponent,
-
+    MyAccountComponent
 
   ],
   imports: [
@@ -34,7 +31,9 @@ import { StoreModule } from '@ngrx/store';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({app: appReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    StoreModule.forFeature('movie',appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

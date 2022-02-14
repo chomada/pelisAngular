@@ -1,5 +1,7 @@
 
 <h1 color="accent">Admin</h1>
+
+<button type="button" class="btn btn-dark" (click)="cerrarAdmin()">Cerrar Admin</button>
 <form  [formGroup]="movieForm"class="form-group row g-3 formulario">
   <mat-form-field appearance="outline">
     <mat-label>ID</mat-label>
@@ -21,13 +23,6 @@
   <textarea matInput id="description" name="description" formControlName="description"></textarea>
 </mat-form-field>
 
-<!-- <mat-form-field appearance="outline">
-  <mat-label>Category</mat-label>
-  <mat-select id="category" name="category" formControlName="category">
-    <mat-option value="romance">Romance</mat-option>
-    <mat-option value="thriller">Thriller</mat-option>
-  </mat-select>
-</mat-form-field> -->
 
     <input type="file" id="image" name="image" formControlName="image">
 

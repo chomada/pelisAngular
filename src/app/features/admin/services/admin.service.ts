@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../../../models/movie.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { Observable } from 'rxjs';
 export class AdminService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private router: Router
   ) { }
 
   getList(): Observable<Movie[]>{
@@ -37,5 +39,9 @@ updateMovie(id:number,name:string,duration:number,description:string,image:strin
   })
 }
 
+closeAdmin(){
+  localStorage.removeItem('role');
+  this.router.navigate(['']);
+}
 
 }

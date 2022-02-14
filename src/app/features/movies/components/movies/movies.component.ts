@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/features/cart/service/cart.service';
 //import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
+import { AppSetTitle } from '../../../../store/app.actions';
 
 
 @Component({
@@ -20,10 +22,14 @@ export class MoviesComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private movieService:MovieService,
-    private router:Router
+    private router:Router,
+    private store: Store
     ) {console.log("Hook Constructor"); }
 
   ngOnInit(): void {
+    this.store.dispatch(
+      AppSetTitle({title: 'On Movies'})
+    )
     this.subscription= this.movieService.getList().subscribe(movies =>this.movies=movies);
     console.log("Hook On Init")
   }

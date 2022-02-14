@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Movie} from 'src/app/models/movie.model'
 import { CartService } from '../../service/cart.service';
+import {Store} from '@ngrx/store';
+import { AppSetTitle } from '../../../../store/app.actions';
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +15,13 @@ export class CartComponent implements OnInit {
 
   valor: boolean= true;
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartService: CartService,
+    private store: Store
+    ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(AppSetTitle({title: 'On Cart'}))
     this.cartService.getList().subscribe(list=>this.list=list)
     if(this.list.length==0){
       this.valor=false;
