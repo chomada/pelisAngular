@@ -25,8 +25,6 @@ export class AdminComponent implements OnInit {
   image:string='';
   valor: boolean= true;
   respuesta:string='';
-  cargar: boolean =false;
-  boton:boolean=true;
   private subscription: Subscription | undefined;
 
   movieForm= new FormGroup({
@@ -57,23 +55,15 @@ export class AdminComponent implements OnInit {
     console.log("Hook On Init")
 
 
-    // let item : Movie={id: 1, name: 'Star Wars', duration: 89, description: 'Episode III', image: 'sw.jpg',category: ''};
-    //  this.store.dispatch(movieAddItem({item}));
-    //  item ={id: 2, name: 'Batman', duration: 142, description: 'The joker', image: 'batman.jpg',category: ''};
-    //  this.store.dispatch(movieAddItem({item}))
+    let item : Movie={id: 1, name: 'Star Wars', duration: 89, description: 'Episode III', image: 'sw.jpg',category: ''};
+     this.store.dispatch(movieAddItem({item}));
+     item ={id: 2, name: 'Batman', duration: 142, description: 'The joker', image: 'batman.jpg',category: ''};
+     this.store.dispatch(movieAddItem({item}))
 
      this.movieItems$=this.store.pipe(select(movieSelector))
   }
 
-  cargarPelis(){
-    for (let item of this.movies){
-      this.store.dispatch(movieAddItem({item}))
 
-    }
-    this.cargar=true;
-    this.boton=false;
-
-  }
   // ngAfterViewInit(){
 
   //   if (this.movies.length==1){

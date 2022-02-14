@@ -15,6 +15,8 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import {  MovieEffects } from './store/app.effects';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { environment } from '../environments/environment';
     StoreModule.forRoot({app: appReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     StoreModule.forFeature('movie',appReducer)
+    //EffectsModule.forFeature([MovieEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

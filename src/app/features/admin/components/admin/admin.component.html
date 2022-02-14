@@ -33,8 +33,8 @@
 </form>
 
 
-
-<div class="movie-container">
+<button *ngIf="boton" type="button" class="btn btn-success pelis" (click)="cargarPelis()">Cargar Pelis</button>
+<div *ngIf="cargar"class="movie-container">
 <mat-card *ngFor="let movie of movieItems$ |async" style="width: 18rem;">
   <mat-card-header>
     <mat-card-title >{{movie.name}}</mat-card-title>

@@ -22,10 +22,11 @@ export class InfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.movieService.getDetail(this.activatedRoute.snapshot.params['id'])
-    // .subscribe(movie=>this.cartService.addMovie(movie as Movie))
+
     this.subscription=this.movieService.getById(this.activatedRoute.snapshot.params['id'])
      .subscribe(movie=>this.movie=movie);
+     console.log('Hola')
+     console.log(this.movie)
   }
 
 

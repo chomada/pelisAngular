@@ -11,10 +11,14 @@ export const movieSetContent = createAction(
   props<{items: Movie[]}>()
 )
 export const movieAddItem= createAction(
-  'Movie - Add item',
+  'Movie - Add Item',
   props<{item: Movie}>()
 );
 export const movieDeleteItem= createAction(
-  'Movie - Delete item',
+  'Movie - Delete Item',
   props<{itemId: number}>()
+);
+export const movieUpdateItem=createAction(
+  'Movie - Update Item',
+  props<{item:Movie}>()
 );
